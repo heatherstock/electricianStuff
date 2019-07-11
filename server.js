@@ -1,6 +1,7 @@
 const electricConfig = require('./electric-config')
 const electricMongo = require('./electric-mongo');
 const electricRabbit = require('./electric-rabbit');
+const app = require('./app');
 
 const allTheThings = {
   config: electricConfig,
@@ -16,9 +17,9 @@ const start = async (allTheThings) => {
     component.dependencies.map(name => {
       return system[name];
     })
-    console.log(system)
     system[name] = await component.start(system);
   }
+  app.start(system);
 };
 
 const stop = async (allTheThings) => {

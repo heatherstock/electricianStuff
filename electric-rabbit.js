@@ -6,6 +6,7 @@ const start = async ({ config }) => {
     console.log('RabbitMQ connected');
     rabbit = connection;
   });
+  return rabbit;
 }
 
 const stop = async () => {
